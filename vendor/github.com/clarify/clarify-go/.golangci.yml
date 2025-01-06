@@ -1,0 +1,17 @@
+linters:
+  enable:
+    - asciicheck # Simple linter to check that your code does not contain non-ASCII identifiers.
+    - gci # Control golang package import order and make it always deterministic.
+    - godot # Check if comments end in a period.
+    - misspell # Finds commonly misspelled English words in comments.
+    - goheader # Checks is file header matches pattern.
+    - gofumpt
+
+linters-settings:
+  goheader:
+    values:
+      const:
+        COMPANY: Searis AS
+      regexp:
+        ANY_AUTHOR: "(.*)"
+    template-path: .go-header.tmpl
