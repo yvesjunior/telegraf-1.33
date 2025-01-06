@@ -416,7 +416,7 @@ github.com/antchfx/jsonquery
 # github.com/antchfx/xmlquery v1.4.1
 ## explicit; go 1.14
 github.com/antchfx/xmlquery
-# github.com/antchfx/xpath v1.3.1
+# github.com/antchfx/xpath v1.3.2
 ## explicit; go 1.14
 github.com/antchfx/xpath
 # github.com/antlr4-go/antlr/v4 v4.13.1
@@ -2207,7 +2207,7 @@ github.com/spf13/pflag
 # github.com/srebhan/cborquery v1.0.1
 ## explicit; go 1.20
 github.com/srebhan/cborquery
-# github.com/srebhan/protobufquery v1.0.1
+# github.com/srebhan/protobufquery v1.0.2
 ## explicit; go 1.20
 github.com/srebhan/protobufquery
 # github.com/stoewer/go-strcase v1.3.0
