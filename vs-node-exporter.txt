@@ -1,0 +1,12 @@
+When to Use Telegraf
+If you need to collect metrics from various sources beyond just system metrics (databases, cloud services, IoT, etc.).
+If you're using InfluxDB or other time-series databases apart from Prometheus.
+If you need a flexible, plugin-based agent that supports various input/output plugins.
+When to Use Node Exporter
+If your primary monitoring stack is Prometheus and you only need system-level metrics.
+If you want a lightweight, efficient solution without additional configuration.
+If you need something easy to deploy in Kubernetes or Linux-based environments.
+Can They Work Together?
+Yes! You can use Node Exporter for system metrics and Telegraf for application, cloud, and database metrics. Both can send data to Prometheus, allowing you to get a comprehensive view of your infrastructure.
+
+Would you like a more detailed technical comparison or an example setup?
