@@ -205,21 +205,6 @@ If Telegraf is ingesting metrics via HTTP (e.g., `inputs.http_listener_v2`), use
 
 ---
 
-### **Method 3: Using `stress-ng` to Overload CPU and Memory**
-Test how Telegraf behaves under high system load:
-```bash
-stress-ng --cpu 4 --io 2 --vm 2 --vm-bytes 512M --timeout 60s
-```
-This:
-- Runs 4 CPU stressors.
-- Performs 2 I/O stress operations.
-- Uses 2 memory stressors with 512MB.
-- Runs for 60 seconds.
-
-Check if Telegraf slows down or drops metrics.
-
----
-
 ## **3. Monitor Performance**
 ### **Telegraf Internal Metrics**
 Enable Telegraf’s internal metrics:
