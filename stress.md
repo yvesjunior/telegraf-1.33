@@ -260,3 +260,57 @@ If performance degrades, try:
 - Review backend ingestion rates (e.g., InfluxDB or Prometheus).
 
 ---
+
+
+# Global Agent Configuration
+[agent]
+  interval = "10s"           # Data collection interval
+  round_interval = true
+  metric_batch_size = 1000
+  metric_buffer_limit = 10000
+  collection_jitter = "0s"
+  flush_interval = "10s"
+  flush_jitter = "0s"
+  precision = ""
+  debug = false
+  quiet = false
+  hostname = ""              # Set to override the hostname
+
+# Input Plugins for Host Metrics
+[[inputs.cpu]]
+  percpu = true
+  totalcpu = true
+  collect_cpu_time = false
+  report_active = true
+
+[[inputs.mem]]
+
+[[inputs.swap]]
+
+[[inputs.disk]]
+  ignore_fs = ["tmpfs", "devtmpfs", "overlay"]
+
+[[inputs.diskio]]
+
+[[inputs.net]]
+  interfaces = ["eth0", "eth1"]  # Specify interfaces or leave empty for all
+
+[[inputs.netstat]]
+
+[[inputs.system]]
+
+[[inputs.processes]]
+
+[[inputs.kernel]]
+
+# Output Plugin (Example: InfluxDB)
+[[outputs.influxdb]]
+  urls = ["http://localhost:8086"]
+  database = "telegraf"
+  username = "telegraf"
+  password = "telegraf_password"
+  retention_policy = ""
+  timeout = "5s"
+  precision = "s"
+
+
