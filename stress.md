@@ -314,3 +314,78 @@ If performance degrades, try:
   precision = "s"
 
 
+=================
+Telegraf and Prometheus handle **data retention** quite differently due to their distinct architectures and roles in the monitoring stack:
+
+---
+
+## **1. Telegraf:**
+### Role:
+- Telegraf is a **metrics collector and forwarder**. It does not store metrics long-term but temporarily buffers them before sending to an external time-series database.
+
+### Data Retention:
+- **No Long-term Storage**: Telegraf does not retain data permanently. It relies on the output destination (e.g., InfluxDB, Prometheus Remote Write, Graphite) for storage.
+- **Temporary Buffering**:
+  - Metrics are buffered in memory or on disk temporarily when the output destination is unavailable.
+  - Controlled by `metric_buffer_limit`:
+    ```toml
+    [agent]
+      metric_buffer_limit = 10000
+    ```
+    - This example buffers up to **10,000 metrics**. If the limit is exceeded, older metrics are dropped.
+
+### Retention Summary:
+- **Short-term only**: Limited to buffering until metrics are forwarded.
+- **Retention Duration**: Seconds to minutes, depending on buffer size and output availability.
+- **Long-term Retention**: Determined by the external storage system (e.g., InfluxDB or Prometheus).
+
+---
+
+## **2. Prometheus:**
+### Role:
+- Prometheus is a **time-series database and monitoring system** that collects, stores, and queries metrics.
+
+### Data Retention:
+- **In-Memory and Disk Storage**:
+  - Prometheus keeps recent data in memory for fast querying and stores older data on disk.
+- **Retention Configuration**:
+  - Controlled by `--storage.tsdb.retention.time` flag:
+    ```yaml
+    --storage.tsdb.retention.time=15d
+    ```
+    - This example retains data for **15 days**.
+- **Retention Capabilities**:
+  - Can be set from hours to years depending on disk space and performance requirements.
+  - Data is **compacted** over time to optimize storage space.
+- **Advanced Retention Options**:
+  - Limit by size using `--storage.tsdb.retention.size`.
+  - Remote storage integrations (e.g., Thanos, Cortex) enable **infinite retention** by offloading data.
+
+### Retention Summary:
+- **Short and Long-term**: Supports both in-memory and on-disk retention.
+- **Retention Duration**: Configurable from hours to years.
+- **Long-term Retention**: Can be extended indefinitely with remote storage solutions.
+
+---
+
+## **Comparison Summary:**
+
+| Feature                | **Telegraf**                          | **Prometheus**                          |
+|------------------------|--------------------------------------|------------------------------------------|
+| **Role**               | Metrics collector and forwarder       | Time-series database and monitoring system|
+| **Data Storage**       | No long-term storage                  | In-memory and on-disk time-series storage |
+| **Retention Duration** | Short-term buffering (seconds/minutes)| Configurable (hours to years, or infinite)|
+| **Retention Control**  | `metric_buffer_limit`                 | `--storage.tsdb.retention.time`           |
+| **Long-term Retention**| Depends on external storage system    | Built-in or with remote storage solutions |
+| **Scaling**            | Stateless, horizontally scalable      | Stateful, scales with federation or remote storage |
+
+---
+
+## **Key Takeaways:**
+- **Telegraf** is stateless and depends on external storage for data retention, making it lightweight but reliant on the availability and configuration of the destination database.
+- **Prometheus** has built-in retention control and can store data long-term, but requires more resources and state management.
+
+---
+
+Would you like help configuring data retention settings or setting up long-term storage solutions for Prometheus?
+
