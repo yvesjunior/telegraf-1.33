@@ -416,7 +416,7 @@ github.com/antchfx/jsonquery
 # github.com/antchfx/xmlquery v1.4.1
 ## explicit; go 1.14
 github.com/antchfx/xmlquery
-# github.com/antchfx/xpath v1.3.1
+# github.com/antchfx/xpath v1.3.3
 ## explicit; go 1.14
 github.com/antchfx/xpath
 # github.com/antlr4-go/antlr/v4 v4.13.1
@@ -2207,7 +2207,7 @@ github.com/spf13/pflag
 # github.com/srebhan/cborquery v1.0.1
 ## explicit; go 1.20
 github.com/srebhan/cborquery
-# github.com/srebhan/protobufquery v1.0.1
+# github.com/srebhan/protobufquery v1.0.3
 ## explicit; go 1.20
 github.com/srebhan/protobufquery
 # github.com/stoewer/go-strcase v1.3.0
@@ -2216,9 +2216,10 @@ github.com/stoewer/go-strcase
 # github.com/stretchr/objx v0.5.2
 ## explicit; go 1.20
 github.com/stretchr/objx
-# github.com/stretchr/testify v1.9.0
+# github.com/stretchr/testify v1.10.0
 ## explicit; go 1.17
 github.com/stretchr/testify/assert
+github.com/stretchr/testify/assert/yaml
 github.com/stretchr/testify/mock
 github.com/stretchr/testify/require
 github.com/stretchr/testify/suite
@@ -3033,7 +3034,7 @@ google.golang.org/grpc/xds/internal/xdsclient/xdsresource/version
 ## explicit; go 1.21
 google.golang.org/grpc/stats/opentelemetry
 google.golang.org/grpc/stats/opentelemetry/internal
-# google.golang.org/protobuf v1.35.1
+# google.golang.org/protobuf v1.36.4
 ## explicit; go 1.21
 google.golang.org/protobuf/encoding/protodelim
 google.golang.org/protobuf/encoding/protojson
@@ -3057,6 +3058,7 @@ google.golang.org/protobuf/internal/genid
 google.golang.org/protobuf/internal/impl
 google.golang.org/protobuf/internal/order
 google.golang.org/protobuf/internal/pragma
+google.golang.org/protobuf/internal/protolazy
 google.golang.org/protobuf/internal/set
 google.golang.org/protobuf/internal/strs
 google.golang.org/protobuf/internal/version
