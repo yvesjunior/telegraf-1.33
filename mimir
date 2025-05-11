@@ -14,3 +14,7 @@ export default function () {
   myCounter.add(1, { foo: 'bar' }); // Add a value with labels
   sleep(1);
 }
+
+//./k6 run \
+  --out xk6-output-remotewrite=https://<mimir-host>/api/v1/push?headers=X-Scope-OrgID:anonymous \
+  script.js
