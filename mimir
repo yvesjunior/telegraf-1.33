@@ -2,15 +2,6 @@ import http from 'k6/http';
 import { sleep } from 'k6';
 import remote from 'k6/x/remotewrite';
 
-// Configure the remote write endpoint and headers
-remote.configure({
-  url: 'https://<mimir-host>/api/v1/push',
-  headers: {
-    'X-Scope-OrgID': 'anonymous', // or your tenant/org ID
-  },
-  // Optional: username, password, tlsSkipVerify, etc.
-});
-
 export const options = {
   vus: 1,
   duration: '10s',
@@ -18,7 +9,6 @@ export const options = {
 
 export default function () {
   http.get('https://test.k6.io');
-  // Push a custom metric
   remote.writeMetric({
     name: 'my_custom_metric',
     value: 1,
@@ -26,3 +16,5 @@ export default function () {
   });
   sleep(1);
 }
+
+// ./k6 run --out xk6-output-remotewrite=https://<mimir-host>/api/v1/push?headers=X-Scope-OrgID:anonymous mimir.js
