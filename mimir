@@ -1,5 +1,24 @@
-echo 'my_custom_metric{job="curl_push",instance="localhost"} 42' | \
-curl -X POST http://localhost:9009/api/v1/push \
-  -H "Content-Type: text/plain" \
-  -H "X-Scope-OrgID: demo" \
-  --data-binary @-
+import { check, sleep, Trend } from 'k6';
+import http from 'k6/http';
+
+// Define custom metric
+let myTrend = new Trend('my_custom_metric');
+
+export default function () {
+  let res = http.get('https://httpbin.org/get'); // Simulate some HTTP request
+
+  // Add metric data
+  myTrend.add(res.status); // For example, using HTTP status code as the metric value
+  
+  check(res, {
+    'status is 200': (r) => r.status === 200,
+  });
+
+  // Sleep to simulate time between requests
+  sleep(1);
+}
+
+
+
+k6 run script.js
+k6 run --out prometheus=http://localhost:9090 script.js
