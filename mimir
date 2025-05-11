@@ -1,6 +1,8 @@
 import http from 'k6/http';
 import { sleep } from 'k6';
-import remote from 'k6/x/remotewrite';
+import { Counter } from 'k6/metrics';
+
+const myCounter = new Counter('my_custom_metric');
 
 export const options = {
   vus: 1,
@@ -9,12 +11,6 @@ export const options = {
 
 export default function () {
   http.get('https://test.k6.io');
-  remote.writeMetric({
-    name: 'my_custom_metric',
-    value: 1,
-    labels: { foo: 'bar' },
-  });
+  myCounter.add(1, { foo: 'bar' }); // Add a value with labels
   sleep(1);
 }
-
-// ./k6 run --out xk6-output-remotewrite=https://<mimir-host>/api/v1/push?headers=X-Scope-OrgID:anonymous mimir.js
