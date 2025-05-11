@@ -1,5 +1,5 @@
+echo 'my_custom_metric{job="curl_push",instance="localhost"} 42' | \
 curl -X POST http://localhost:9009/api/v1/push \
   -H "Content-Type: text/plain" \
-  --data-binary @- <<EOF
-my_custom_metric{job="curl_push"} 123
-EOF
+  -H "X-Scope-OrgID: demo" \
+  --data-binary @-
