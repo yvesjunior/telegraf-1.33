@@ -1,0 +1,97 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: mimir-distributor
+  namespace: mimir
+spec:
+  secretName: mimir-distributor-tls
+  commonName: mimir-distributor.mimir.svc.cluster.local
+  dnsNames:
+    - mimir-distributor.mimir.svc.cluster.local
+  issuerRef:
+    name: mimir-ca
+    kind: ClusterIssuer
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: mimir-ingester
+  namespace: mimir
+spec:
+  secretName: mimir-ingester-tls
+  commonName: mimir-ingester.mimir.svc.cluster.local
+  dnsNames:
+    - mimir-ingester.mimir.svc.cluster.local
+  issuerRef:
+    name: mimir-ca
+    kind: ClusterIssuer
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: mimir-querier
+  namespace: mimir
+spec:
+  secretName: mimir-querier-tls
+  commonName: mimir-querier.mimir.svc.cluster.local
+  dnsNames:
+    - mimir-querier.mimir.svc.cluster.local
+  issuerRef:
+    name: mimir-ca
+    kind: ClusterIssuer
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: mimir-query-frontend
+  namespace: mimir
+spec:
+  secretName: mimir-query-frontend-tls
+  commonName: mimir-query-frontend.mimir.svc.cluster.local
+  dnsNames:
+    - mimir-query-frontend.mimir.svc.cluster.local
+  issuerRef:
+    name: mimir-ca
+    kind: ClusterIssuer
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: mimir-store-gateway
+  namespace: mimir
+spec:
+  secretName: mimir-store-gateway-tls
+  commonName: mimir-store-gateway.mimir.svc.cluster.local
+  dnsNames:
+    - mimir-store-gateway.mimir.svc.cluster.local
+  issuerRef:
+    name: mimir-ca
+    kind: ClusterIssuer
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: mimir-compactor
+  namespace: mimir
+spec:
+  secretName: mimir-compactor-tls
+  commonName: mimir-compactor.mimir.svc.cluster.local
+  dnsNames:
+    - mimir-compactor.mimir.svc.cluster.local
+  issuerRef:
+    name: mimir-ca
+    kind: ClusterIssuer
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: mimir-ruler
+  namespace: mimir
+spec:
+  secretName: mimir-ruler-tls
+  commonName: mimir-ruler.mimir.svc.cluster.local
+  dnsNames:
+    - mimir-ruler.mimir.svc.cluster.local
+  issuerRef:
+    name: mimir-ca
+    kind: ClusterIssuer
