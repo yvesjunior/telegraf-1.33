@@ -1,0 +1,118 @@
+distributor:
+  extraVolumes:
+    - name: tls
+      secret:
+        secretName: mimir-distributor-tls
+  extraVolumeMounts:
+    - name: tls
+      mountPath: /tls
+      readOnly: true
+  extraArgs:
+    - -server.grpc-tls-cert-path=/tls/tls.crt
+    - -server.grpc-tls-key-path=/tls/tls.key
+    - -server.grpc-client-ca-path=/tls/ca.crt
+    - -server.http-tls-cert-path=/tls/tls.crt
+    - -server.http-tls-key-path=/tls/tls.key
+    - -server.http-client-ca-path=/tls/ca.crt
+
+ingester:
+  extraVolumes:
+    - name: tls
+      secret:
+        secretName: mimir-ingester-tls
+  extraVolumeMounts:
+    - name: tls
+      mountPath: /tls
+      readOnly: true
+  extraArgs:
+    - -server.grpc-tls-cert-path=/tls/tls.crt
+    - -server.grpc-tls-key-path=/tls/tls.key
+    - -server.grpc-client-ca-path=/tls/ca.crt
+    - -server.http-tls-cert-path=/tls/tls.crt
+    - -server.http-tls-key-path=/tls/tls.key
+    - -server.http-client-ca-path=/tls/ca.crt
+
+querier:
+  extraVolumes:
+    - name: tls
+      secret:
+        secretName: mimir-querier-tls
+  extraVolumeMounts:
+    - name: tls
+      mountPath: /tls
+      readOnly: true
+  extraArgs:
+    - -server.grpc-tls-cert-path=/tls/tls.crt
+    - -server.grpc-tls-key-path=/tls/tls.key
+    - -server.grpc-client-ca-path=/tls/ca.crt
+    - -server.http-tls-cert-path=/tls/tls.crt
+    - -server.http-tls-key-path=/tls/tls.key
+    - -server.http-client-ca-path=/tls/ca.crt
+
+queryFrontend:
+  extraVolumes:
+    - name: tls
+      secret:
+        secretName: mimir-query-frontend-tls
+  extraVolumeMounts:
+    - name: tls
+      mountPath: /tls
+      readOnly: true
+  extraArgs:
+    - -server.grpc-tls-cert-path=/tls/tls.crt
+    - -server.grpc-tls-key-path=/tls/tls.key
+    - -server.grpc-client-ca-path=/tls/ca.crt
+    - -server.http-tls-cert-path=/tls/tls.crt
+    - -server.http-tls-key-path=/tls/tls.key
+    - -server.http-client-ca-path=/tls/ca.crt
+
+storeGateway:
+  extraVolumes:
+    - name: tls
+      secret:
+        secretName: mimir-store-gateway-tls
+  extraVolumeMounts:
+    - name: tls
+      mountPath: /tls
+      readOnly: true
+  extraArgs:
+    - -server.grpc-tls-cert-path=/tls/tls.crt
+    - -server.grpc-tls-key-path=/tls/tls.key
+    - -server.grpc-client-ca-path=/tls/ca.crt
+    - -server.http-tls-cert-path=/tls/tls.crt
+    - -server.http-tls-key-path=/tls/tls.key
+    - -server.http-client-ca-path=/tls/ca.crt
+
+compactor:
+  extraVolumes:
+    - name: tls
+      secret:
+        secretName: mimir-compactor-tls
+  extraVolumeMounts:
+    - name: tls
+      mountPath: /tls
+      readOnly: true
+  extraArgs:
+    - -server.grpc-tls-cert-path=/tls/tls.crt
+    - -server.grpc-tls-key-path=/tls/tls.key
+    - -server.grpc-client-ca-path=/tls/ca.crt
+    - -server.http-tls-cert-path=/tls/tls.crt
+    - -server.http-tls-key-path=/tls/tls.key
+    - -server.http-client-ca-path=/tls/ca.crt
+
+ruler:
+  extraVolumes:
+    - name: tls
+      secret:
+        secretName: mimir-ruler-tls
+  extraVolumeMounts:
+    - name: tls
+      mountPath: /tls
+      readOnly: true
+  extraArgs:
+    - -server.grpc-tls-cert-path=/tls/tls.crt
+    - -server.grpc-tls-key-path=/tls/tls.key
+    - -server.grpc-client-ca-path=/tls/ca.crt
+    - -server.http-tls-cert-path=/tls/tls.crt
+    - -server.http-tls-key-path=/tls/tls.key
+    - -server.http-client-ca-path=/tls/ca.crt
