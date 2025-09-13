@@ -2153,7 +2153,7 @@ github.com/signalfx/com_signalfx_metrics_protobuf/model
 # github.com/signalfx/gohistogram v0.0.0-20160107210732-1ccfd2ff5083
 ## explicit
 github.com/signalfx/gohistogram
-# github.com/signalfx/golib/v3 v3.3.54
+# github.com/signalfx/golib/v3 v3.3.55
 ## explicit; go 1.18
 github.com/signalfx/golib/v3/datapoint
 github.com/signalfx/golib/v3/datapoint/dpsink
